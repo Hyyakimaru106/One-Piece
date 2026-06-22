@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece Journey Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #060b13;
+            --bg-card: rgba(15, 23, 42, 0.55);
+            --border-glass: rgba(218, 165, 32, 0.15);
+            --gold: #d4af37;
+            --gold-bright: #ffd700;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --gradient-hero: linear-gradient(135deg, #0f172a 0%, #060b13 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(218, 165, 32, 0.4);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(6, 11, 19, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.03) 0%, transparent 60%);
+            animation: rotateBg 20s linear infinite;
+        }
+
+        @keyframes rotateBg {
+            0% { transform: translate(-25%, -25%) rotate(0deg); }
+            100% { transform: translate(-25%, -25%) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            color: var(--gold-bright);
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .btn-explore {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--gold) 0%, #b29024 100%);
+            color: #000;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Universal Search UI component */
+        .search-container {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-wrapper input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+        }
+
+        /* Sagas Accordion Layout */
+        .saga-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .saga-item {
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+
+        .saga-header {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+
+        .saga-header:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .saga-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            color: var(--gold);
+        }
+
+        .saga-icon {
+            transition: transform 0.3s ease;
+            color: var(--gold);
+        }
+
+        .saga-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .arc-inner-list {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .arc-card {
+            padding: 15px;
+            border-left: 3px solid var(--gold);
+            background: rgba(255,255,255,0.02);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .arc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* Episode Log Layout */
+        .episode-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .filter-select option {
+            background: var(--bg-dark);
+        }
+
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .episode-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ep-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .ep-number {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .tracker-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .tracker-btn.watched {
+            color: #4ade80;
+        }
+
+        /* Movie Grid Layout */
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .movie-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .movie-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .movie-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .rating-box {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 15px;
+        }
+
+        .star-rating i {
+            color: rgba(255,255,255,0.2);
+            cursor: pointer;
+        }
+
+        .star-rating i.active {
+            color: var(--gold-bright);
+        }
+
+        /* Character Cards Layout */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .char-card {
+            border-top: 3px solid var(--gold);
+        }
+
+        .char-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .char-info {
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .char-label {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Log Pose Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold) 0%, rgba(212,175,55,0.1) 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gold-bright);
+            box-shadow: 0 0 10px var(--gold);
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -8px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+
+        .timeline-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        /* Structural Footer */
+        footer {
+            background: #03060a;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-dark);
+                border-bottom: 1px solid var(--border-glass);
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 40px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+                text-align: left !important;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo"><i class="fa-solid fa-compass"></i> Grand Line Guide</a>
+            <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-links" id="nav-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#sagas">Sagas & Arcs</a></li>
+                <li><a href="#episodes">Episode Guide</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#characters">Characters</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The One Piece Odyssey</h1>
+            <p>Track your coordinates across the definitive, encyclopedia of the world's greatest pirate saga. Arcs, logs, films, and legendary figures.</p>
+            <a href="#sagas" class="btn-explore">Explore Logbook</a>
+        </div>
+    </section>
+
+    <section id="sagas" class="section container">
+        <h2 class="section-title">Story Sagas & Arcs</h2>
+        
+        <div class="search-container">
+            <div class="search-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="arc-search" placeholder="Search story arcs or sagas...">
+            </div>
+        </div>
+
+        <div class="saga-list" id="saga-accordion-container">
+            </div>
+    </section>
+
+    <section id="episodes" class="section container">
+        <h2 class="section-title">Episode Log Guide</h2>
+        <div class="episode-controls">
+            <div class="search-wrapper" style="max-width: 350px; margin-bottom:0;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="episode-search" placeholder="Search episode number or title...">
+            </div>
+            <select id="saga-filter" class="filter-select">
+                <option value="all">All Sagas</option>
+                <option value="East Blue Saga">East Blue Saga</option>
+                <option value="Alabasta Saga">Alabasta Saga</option>
+                <option value="Sky Island Saga">Sky Island Saga</option>
+                <option value="Water 7 Saga">Water 7 Saga</option>
+                <option value="Thriller Bark Saga">Thriller Bark Saga</option>
+                <option value="Summit War Saga">Summit War Saga</option>
+                <option value="Fish-Man Island Saga">Fish-Man Island Saga</option>
+                <option value="Dressrosa Saga">Dressrosa Saga</option>
+                <option value="Whole Cake Island Saga">Whole Cake Island Saga</option>
+                <option value="Wano Country Saga">Wano Country Saga</option>
+                <option value="Final Saga">Final Saga</option>
+            </select>
+        </div>
+        <div class="episode-grid" id="episode-display-grid">
+            </div>
+    </section>
+
+    <section id="movies" class="section container">
+        <h2 class="section-title">The Cinematic Collection</h2>
+        <div class="movies-grid" id="movie-display-grid">
+            </div>
+    </section>
+
+    <section id="characters" class="section container">
+        <h2 class="section-title">Legendary Profiles</h2>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="filterCharacters('all')">All Groups</button>
+            <button class="tab-btn" onclick="filterCharacters('Straw Hat Pirates')">Straw Hats</button>
+            <button class="tab-btn" onclick="filterCharacters('Marines')">Marines</button>
+            <button class="tab-btn" onclick="filterCharacters('Yonko')">Yonko (Emperors)</button>
+            <button class="tab-btn" onclick="filterCharacters('Warlords')">Warlords</button>
+            <button class="tab-btn" onclick="filterCharacters('Revolutionary Army')">Revolutionary Army</button>
+        </div>
+        <div class="character-grid" id="character-display-grid">
+            </div>
+    </section>
+
+    <section id="timeline" class="section container">
+        <h2 class="section-title">Log Pose Timeline</h2>
+        <div class="timeline" id="timeline-container">
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 One Piece Odyssey Guide.</p>
+    </footer>
+
+    <script>
+        // --- Complete Canon Sagas and Arcs Index Mapping Dataset ---
+        const sagasData = [
+            {
+                title: "East Blue Saga",
+                arcs: [
+                    { name: "Romance Dawn Arc", range: "Episodes 1–3", summary: "Luffy gains his iconic rubber powers, meets Coby, recruits Zoro, and sets sail to establish the ultimate pirate fleet." },
+                    { name: "Orange Town Arc", range: "Episodes 4–8", summary: "The Straw Hats cross paths with Nami and clash with Buggy the Clown over a map of the Grand Line." },
+                    { name: "Syrup Village Arc", range: "Episodes 9–18", summary: "Luffy recruits Usopp, defeats the deceptive Captain Kuro, and acquires their first official pirate ship, the Going Merry." },
+                    { name: "Baratie Arc", range: "Episodes 19–30", summary: "At a floating ocean restaurant, Luffy encounters the chef Sanji and faces the ruthless warlord Don Krieg, while Zoro clashes with Dracule Mihawk." },
+                    { name: "Arlong Park Arc", range: "Episodes 31–44", summary: "The crew fights to liberate Nami and her hometown from the oppressive, tier-based tyranny of the fishman Arlong." },
+                    { name: "Loguetown Arc", range: "Episodes 45–53", summary: "The crew stops at the city where Gold Roger was born and executed, narrowly escaping Marine Captain Smoker to enter the Grand Line." }
+                ]
+            },
+            {
+                title: "Alabasta Saga",
+                arcs: [
+                    { name: "Reverse Mountain Arc", range: "Episodes 61–63", summary: "The Straw Hats scale a mountain of rushing water, enter the Grand Line, and meet the massive island whale Laboon." },
+                    { name: "Whiskey Peak Arc", range: "Episodes 64–67", summary: "The crew is welcomed by a town of bounty hunters, uncovering a plot involving Baroque Works and Princess Vivi of Alabasta." },
+                    { name: "Little Garden Arc", range: "Episodes 68–77", summary: "The crew lands on a prehistoric island where two giants have been dueling for a century, while fighting off Baroque Works agents." },
+                    { name: "Drum Island Arc", range: "Episodes 78–91", summary: "Searching for a doctor to cure Nami, Luffy climbs a frozen mountain, meets Tony Tony Chopper, and overthrows the selfish King Wapol." },
+                    { name: "Alabasta Arc", range: "Episodes 92–130", summary: "The crew arrives in a desert kingdom on the brink of civil war to stop Crocodile, a Warlord of the Sea, from seizing an ancient weapon." }
+                ]
+            },
+            {
+                title: "Sky Island Saga",
+                arcs: [
+                    { name: "Jaya Arc", range: "Episodes 144–152", summary: "The crew tracks down historical proof of a mythical island located miles directly in the sky while brushing shoulders with Blackbeard." },
+                    { name: "Skypiea Arc", range: "Episodes 153–195", summary: "An ethereal conflict reaches its zenith atop hidden clouds against Eneru, a self-proclaimed god wielding lightning." }
+                ]
+            },
+            {
+                title: "Water 7 Saga",
+                arcs: [
+                    { name: "Long Ring Long Land Arc", range: "Episodes 207–219", summary: "The Straw Hats are forced into a series of high-stakes pirate games called the Davy Back Fight by the Foxy Pirates." },
+                    { name: "Water 7 Arc", range: "Episodes 229–263", summary: "The crew visits a magnificent metropolis of shipwrights, facing the tragic breakdown of the Going Merry, Robin's sudden betrayal, and Usopp's departure." },
+                    { name: "Enies Lobby Arc", range: "Episodes 264–312", summary: "The Straw Hats declare open war against the World Government at their judicial stronghold to rescue Robin from the assassins of CP9." },
+                    { name: "Post-Enies Lobby Arc", range: "Episodes 313–325", summary: "The crew builds the Thousand Sunny with Franky, welcomes Usopp back, and learns shocking truths about Luffy's legendary family lineage." }
+                ]
+            },
+            {
+                title: "Thriller Bark Saga",
+                arcs: [
+                    { name: "Thriller Bark Arc", range: "Episodes 337–381", summary: "The Straw Hats navigate a haunted, island-sized ship where Warlord Gecko Moria steals shadows to animate an army of zombies. Brook joins the crew." }
+                ]
+            },
+            {
+                title: "Summit War Saga",
+                arcs: [
+                    { name: "Sabaody Archipelago Arc", range: "Episodes 385–405", summary: "The rookies face catastrophic realities against overwhelming military might, resulting in Admiral Kizaru and Kuma completely scattering the crew." },
+                    { name: "Amazon Lily Arc", range: "Episodes 408–421", summary: "Luffy is separated and sent to an island inhabited exclusively by women warriors, where he wins over the Warlord Boa Hancock." },
+                    { name: "Impel Down Arc", range: "Episodes 422–456", summary: "Luffy infiltrates the World Government's maximum-security underwater prison to rescue his brother, Portgas D. Ace." },
+                    { name: "Marineford Arc", range: "Episodes 457–489", summary: "The world scales break completely as the Whitebeard Pirates and Luffy clash with the entire Marine force to save Ace from execution." },
+                    { name: "Post-War Arc", range: "Episodes 490–516", summary: "Grieving his losses, Luffy recalls his childhood with Ace and Sabo, eventually sending a secret message to his crew to train for two years." }
+                ]
+            },
+            {
+                title: "Fish-Man Island Saga",
+                arcs: [
+                    { name: "Return to Sabaody Arc", range: "Episodes 517–522", summary: "Reunited after two years of intensive training, the stronger Straw Hat crew evades Marines and sets sail for the deep sea." },
+                    { name: "Fish-Man Island Arc", range: "Episodes 523–574", summary: "Sailing 10,000 meters below sea level, the crew prevents Hody Jones from executing a coup d'état against the Royal Ryugu Kingdom." }
+                ]
+            },
+            {
+                title: "Dressrosa Saga",
+                arcs: [
+                    { name: "Punk Hazard Arc", range: "Episodes 579–625", summary: "Arriving in the New World, the crew explores an island split between fire and ice, forming a pirate alliance with Trafalgar Law to kidnap Caesar Clown." },
+                    { name: "Dressrosa Arc", range: "Episodes 629–746", summary: "The alliance infiltrates a vibrant, toy-filled kingdom ruled by the deceptive Warlord Donquixote Doflamingo to dismantle his underground empire." }
+                ]
+            },
+            {
+                title: "Whole Cake Island Saga",
+                arcs: [
+                    { name: "Zou Arc", range: "Episodes 751–779", summary: "The crew scales a colossal, walking 1,000-year-old elephant island where they discover the Mink Tribe and learn about the Road Poneglyphs." },
+                    { name: "Whole Cake Island Arc", range: "Episodes 783–877", summary: "Luffy leads a rescue team into Emperor Big Mom's territory to crash an arranged wedding and retrieve Sanji from his abusive biological family." },
+                    { name: "Reverie Arc", range: "Episodes 878–891", summary: "World leaders gather at the Holy Land of Mary Geoise for a global summit, while the Revolutionary Army prepares to make their move." }
+                ]
+            },
+            {
+                title: "Wano Country Saga",
+                arcs: [
+                    { name: "Wano Country Arc (Act 1 & 2)", range: "Episodes 892–958", summary: "The Straw Hats disguise themselves in a closed, samurai-inhabited country to rally a rebellion against the treacherous Shogun Orochi." },
+                    { name: "Wano Country Arc (Act 3 / Onigashima Raid)", range: "Episodes 959–1085", summary: "The ninja-pirate-mink-samurai alliance launches a massive nighttime assault on Onigashima to dethrone the combined might of Emperors Kaido and Big Mom." }
+                ]
+            },
+            {
+                title: "Final Saga",
+                arcs: [
+                    { name: "Egghead Arc", range: "Episodes 1086–Current", summary: "The crew arrives at the futuristic island of the genius scientist Dr. Vegapunk, uncovering forbidden world history while being besieged by CP0 and the Five Elders." }
+                ]
+            }
+        ];
+
+        // --- Complete Multi-Saga Episode Directory Mappings ---
+        const episodesData = [
+            { num: 1, title: "I'm Luffy! The Man Who's Gonna Be King of the Pirates!", saga: "East Blue Saga", summary: "A fateful encounter inside a cruise barrel launches a historic generational shift in power." },
+            { num: 44, title: "Setting Sail with a Smile! Farewell, My Homeland Cocoyasi!", saga: "East Blue Saga", summary: "With Arlong completely crushed, Nami officially commits her sea routes to the Straw Hat vessel." },
+            { num: 92, title: "Alabasta's Hero and a Ballerina on the Ship!", saga: "Alabasta Saga", summary: "The crew steps foot inside the massive desert kingdom while encountering Baroque Works' elusive Mr. 2." },
+            { num: 130, title: "Scent of Danger! The Seventh Member is Nico Robin!", saga: "Alabasta Saga", summary: "As Alabasta recovers from chaos, the elusive archaeologist surprisingly requests asylum aboard the Merry." },
+            { name: "Jaya Entrance Log", num: 144, title: "Caught Log! King of Salvage, Masira!", saga: "Sky Island Saga", summary: "A giant structural ship falls directly from the skies, altering their log pose target coordinates upwards." },
+            { num: 192, title: "Miracle on Skypiea! The Song of God!", saga: "Sky Island Saga", summary: "Luffy rings the legendary golden bell of Shandora, ending centuries of historical geopolitical war." },
+            { num: 230, title: "The Metropolis of Water! Water 7!", saga: "Water 7 Saga", summary: "The crew checks into a spectacular island of canals to secure structural repairs from professional shipwrights." },
+            { num: 278, title: "Say You Want to Live! We Are Your Friends!", saga: "Water 7 Saga", summary: "Robin breaks down in tears, revealing her true desire to live as Luffy commands the ignition of the Government flag." },
+            { num: 340, title: "The Man Called a Genius! Hogback Appears!", saga: "Thriller Bark Saga", summary: "The crew explores a mysterious floating island-ship, stumbling upon a medical facility producing structural zombies." },
+            { num: 405, title: "Crew Members Vanished! The Final Day of the Straw Hat Crew!", saga: "Summit War Saga", summary: "Devastation strikes at Sabaody. Bartholomew Kuma systemically disperses each companion to isolated regions." },
+            { num: 483, title: "Looking for the Answer! Fire Fist Ace Dies on the Battlefield!", saga: "Summit War Saga", summary: "The battlefield plunges into heavy despair as Fire Fist Ace shields Luffy from an absolute lethal blow." },
+            { num: 521, title: "The Battle Begins! Show the Results of Training!", saga: "Fish-Man Island Saga", summary: "After a two-year hiatus, the modernized Straw Hats effortlessly dispatch Pacifista forces at Sabaody." },
+            { num: 565, title: "Luffy's All-Out Strike! Red Hawk Explodes!", saga: "Fish-Man Island Saga", summary: "Luffy funnels his upgraded training into a fiery, haki-infused strike to pierce Hody Jones' drug-fueled armor." },
+            { num: 630, title: "Adventure! The Country of Love and Passion, Dressrosa!", saga: "Dressrosa Saga", summary: "The alliance infiltrates Doflamingo's vibrant kingdom, discovering dark structural anomalies underneath the toys." },
+            { num: 700, title: "The Ultimate Power! The Secret of the Ope Ope no Mi!", saga: "Dressrosa Saga", summary: "Law recounts his tragic upbringing with Corazon and explains the reality behind his fruit's ultimate surgery." },
+            { num: 760, title: "Destruction of the Capital! The Curly Hat Pirates Arrive!", saga: "Whole Cake Island Saga", summary: "Sanji's auxiliary unit protects the devastated Mink Tribe after Jack's horrific chemical weapons assault on Zou." },
+            { num: 870, title: "A Fist of Divine Speed! Another Gear Fourth Form Activated!", saga: "Whole Cake Island Saga", summary: "Luffy adopts the high-velocity 'Snakeman' specialization to rival Katakuri's unmatched observation capabilities." },
+            { num: 900, title: "A Great Battle! Zoro vs. Hawkins!", saga: "Wano Country Saga", summary: "Zoro clashes fiercely with Hawkins' terrifying voodoo straw constructs in Wano's desolate wasteland." },
+            { num: 1015, title: "Straw Hat Luffy! The Man Who Will Become the King of the Pirates!", saga: "Wano Country Saga", summary: "The next-generation leaders ascend the roof of Onigashima, challenging Kaido and Big Mom in an epic showdown." },
+            { num: 1071, title: "Luffy's Peak - Attained! Gear Fifth!", saga: "Wano Country Saga", summary: "The legendary drums of liberation sound as Luffy breaks structural barriers to reveal his ultimate mythical forms." },
+            { num: 1100, title: "Powers on a Different Level! Luffy vs. Lucci!", saga: "Final Saga", summary: "A violent rematch erupts on Egghead as modern automated weapons systems track the clash between old enemies." }
+        ];
+
+        // --- Complete Movie Vault Collection Dataset ---
+        const moviesData = [
+            { title: "One Piece: The Movie", year: 2000, duration: "50 min", rating: 3.8, sync: "The original East Blue lineup clashes with El Drago over a hidden cache of legendary gold." },
+            { title: "Clockwork Island Adventure", year: 2001, duration: "55 min", rating: 4.0, sync: "The crew must scale a mechanical island to reclaim the stolen Going Merry from the Trump Pirates." },
+            { title: "Chopper's Kingdom on the Island of Strange Animals", year: 2002, duration: "56 min", rating: 3.7, sync: "Chopper is accidentally separated and crowned as the divine king of an island populated by exotic beasts." },
+            { title: "Dead End Adventure", year: 2003, duration: "95 min", rating: 4.3, sync: "An underground, rules-free race between elite lawless crews turns into a trap set by an ex-Marine." },
+            { title: "The Cursed Holy Sword", year: 2004, duration: "95 min", rating: 3.9, sync: "Zoro's hidden history surfaces when a legendary, bloodthirsty sword takes control of an old friend." },
+            { title: "Baron Omatsuri and the Secret Island", year: 2005, duration: "91 min", rating: 4.6, sync: "A dark, psychological mystery unfolds as an island resort systematically tears down the crew's bonds." },
+            { title: "Giant Mecha Soldier of Karakuri Castle", year: 2006, duration: "94 min", rating: 4.0, sync: "The Straw Hats solve mechanical puzzles across an island of inventions to unearth a massive golden crown." },
+            { title: "The Desert Princess and the Pirates", year: 2007, duration: "90 min", rating: 4.2, sync: "A theatrical cinematic structural retelling of the iconic battle for the Alabasta Kingdom." },
+            { title: "Episode of Chopper Plus: Bloom in Winter", year: 2008, duration: "113 min", rating: 4.3, sync: "An alternate timeline re-imagining of Drum Island, introducing Nico Robin and Franky early." },
+            { title: "One Piece Film: Strong World", year: 2009, duration: "113 min", rating: 4.7, sync: "The legendary golden pirate Shiki returns, levitating islands to launch a global coup d'état." },
+            { title: "Straw Hat Chase", year: 2011, duration: "30 min", rating: 4.1, sync: "A high-octane 3D pursuit across treacherous waters to retrieve Luffy's iconic straw hat from an elusive eagle." },
+            { title: "One Piece Film: Z", year: 2012, duration: "108 min", rating: 4.8, sync: "An ideological war breaks out as a bitter former Marine Admiral targets all active pirate life in the New World." },
+            { title: "One Piece Film: Gold", year: 2016, duration: "120 min", rating: 4.5, sync: "An ultimate high-stakes heist within Gran Tesoro, an independent sovereign city-ship built of solid gold." },
+            { title: "One Piece: Stampede", year: 2019, duration: "101 min", rating: 4.7, sync: "The ultimate pirate expo turns into an all-out war when Douglas Bullet emerges to challenge the worst generation." },
+            { title: "One Piece Film: Red", year: 2022, duration: "115 min", rating: 4.6, sync: "An omnipotent diva attempts to lock the entire world into an everlasting dream of peace using her song fruit." }
+        ];
+
+        // --- Core Characters Profile Dataset ---
+        const charactersData = [
+            { name: "Monkey D. Luffy", bounty: "3,000,000,000", crew: "Straw Hat Pirates", fruit: "Hito Hito no Mi, Model: Nika", role: "Captain", faction: "Straw Hat Pirates" },
+            { name: "Roronoa Zoro", bounty: "1,111,000,000", crew: "Straw Hat Pirates", fruit: "None", role: "Swordsman", faction: "Straw Hat Pirates" },
+            { name: "Nami", bounty: "366,000,000", crew: "Straw Hat Pirates", fruit: "None", role: "Navigator", faction: "Straw Hat Pirates" },
+            { name: "Vinsmoke Sanji", bounty: "1,032,000,000", crew: "Straw Hat Pirates", fruit: "None", role: "Cook", faction: "Straw Hat Pirates" },
+            { name: "Nico Robin", bounty: "930,000,000", crew: "Straw Hat Pirates", fruit: "Hana Hana no Mi", role: "Archaeologist", faction: "Straw Hat Pirates" },
+            { name: "Monkey D. Garp", bounty: "Unknown", crew: "Marines", fruit: "None", role: "Vice Admiral", faction: "Marines" },
+            { name: "Akainu (Sakazuki)", bounty: "None (Marine)", crew: "Marines", fruit: "Magu Magu no Mi", role: "Fleet Admiral", faction: "Marines" },
+            { name: "Shanks", bounty: "4,048,900,000", crew: "Red Hair Pirates", fruit: "None", role: "Captain / Emperor", faction: "Yonko" },
+            { name: "Marshall D. Teach", bounty: "3,996,000,000", crew: "Blackbeard Pirates", fruit: "Yami Yami / Gura Gura", role: "Admiral / Emperor", faction: "Yonko" },
+            { name: "Dracule Mihawk", bounty: "3,590,000,000", crew: "Cross Guild", fruit: "None", role: "World's Strongest Swordsman", faction: "Warlords" },
+            { name: "Boa Hancock", bounty: "1,659,000,000", crew: "Kuja Pirates", fruit: "Mero Mero no Mi", role: "Empress / Warlord", faction: "Warlords" },
+            { name: "Monkey D. Dragon", bounty: "Unknown", crew: "Freedom Fighters", fruit: "Unknown", role: "Supreme Commander", faction: "Revolutionary Army" },
+            { name: "Sabo", bounty: "602,000,000", crew: "Revolutionary Army", fruit: "Mera Mera no Mi", role: "Chief of Staff", faction: "Revolutionary Army" }
+        ];
+
+        // --- Core Journey Timeline Dataset ---
+        const timelineData = [
+            { title: "East Blue", desk: "The journey begins. Five iconic companions assemble across tranquil but perilous seas." },
+            { title: "Alabasta", desk: "A grand desert nation conspiracy unravels against an underground criminal syndicate." },
+            { title: "Skypiea", desk: "Sailing completely off vertical horizons to discover golden city legends in the sky." },
+            { title: "Water 7", desk: "Intertwined professional betrayals and foundational upgrades push bonds to structural limits." },
+            { title: "Thriller Bark", desk: "Navigating a ghost island-ship where shadows are harvested by a warlord." },
+            { title: "Marineford", desk: "An absolute convergence of apex forces alters global geo-political structural balances forever." },
+            { title: "Fish-Man Island", desk: "Reunited after 2 years, the crew descends 10,000 meters under the sea." },
+            { title: "Dressrosa", desk: "Infiltrating a toy kingdom to bring down Doflamingo's massive underground manufacturing ring." },
+            { title: "Whole Cake Island", desk: "Infiltrating Emperor Big Mom's territory to retrieve Sanji from his biological family." },
+            { title: "Wano Country", desk: "A massive alliance launched a nighttime raid to free Wano from Kaido's rule." },
+            { title: "Egghead Island", desk: "Uncovering forbidden world history at Vegapunk's cybernetic laboratory." }
+        ];
+
+        // --- System Logic UI Handlers & Architecture ---
+
+        // Mobile Menu Navigation Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-list');
+        mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+        // Load & Initialize Sagas Layout Accordions with Filter Search System
+        function renderSagas() {
+            const container = document.getElementById('saga-accordion-container');
+            const query = document.getElementById('arc-search').value.toLowerCase();
+
+            // Filter data structurally based on query
+            const filteredData = sagasData.map(saga => {
+                const matchedArcs = saga.arcs.filter(arc => 
+                    arc.name.toLowerCase().includes(query) || 
+                    arc.summary.toLowerCase().includes(query)
+                );
+                const matchesSagaTitle = saga.title.toLowerCase().includes(query);
+                
+                if (matchesSagaTitle || matchedArcs.length > 0) {
+                    return {
+                        title: saga.title,
+                        arcs: matchesSagaTitle ? saga.arcs : matchedArcs,
+                        forceOpen: query.length > 0
+                    };
+                }
+                return null;
+            }).filter(item => item !== null);
+
+            if (filteredData.length === 0) {
+                container.innerHTML = `<p style="text-align:center;color:var(--text-muted);padding:20px;">No matching records found in the Grand Line files.</p>`;
+                return;
+            }
+
+            container.innerHTML = filteredData.map((saga, index) => {
+                const isOpen = saga.forceOpen;
+                return `
+                <div class="saga-item">
+                    <div class="saga-header" onclick="toggleAccordion(${index})">
+                        <span class="saga-title">${saga.title}</span>
+                        <i class="fa-solid fa-chevron-down saga-icon" id="icon-${index}" style="transform: ${isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}"></i>
+                    </div>
+                    <div class="saga-content" id="content-${index}" style="max-height: ${isOpen ? 'none' : '0px'}">
+                        <div class="arc-inner-list">
+                            ${saga.arcs.map(arc => `
+                                <div class="arc-card">
+                                    <h4 style="color: var(--gold-bright);">${arc.name}</h4>
+                                    <p style="font-size:0.9rem; color:var(--text-muted); margin: 5px 0;">${arc.summary}</p>
+                                    <div class="arc-meta"><span><i class="fa-solid fa-film"></i> Sequence Range</span> <span>${arc.range}</span></div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function toggleAccordion(index) {
+            const content = document.getElementById(`content-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+                setTimeout(() => {
+                    content.closest('.saga-item').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 220);
+            }
+        }
+
+        document.getElementById('arc-search').addEventListener('input', renderSagas);
+
+        // Episode Guide Logic, Tracking and LocalStorage State Synchronization
+        let watchedEpisodes = JSON.parse(localStorage.getItem('watchedEpisodesIndex')) || [];
+
+        function renderEpisodes() {
+            const query = document.getElementById('episode-search').value.toLowerCase();
+            const filter = document.getElementById('saga-filter').value;
+            const container = document.getElementById('episode-display-grid');
+
+            const filtered = episodesData.filter(ep => {
+                const matchesSearch = ep.num.toString().includes(query) || ep.title.toLowerCase().includes(query);
+                const matchesSaga = filter === 'all' || ep.saga === filter;
+                return matchesSearch && matchesSaga;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:var(--text-muted);">No entries match your filtering parameters.</p>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(ep => {
+                const isWatched = watchedEpisodes.includes(ep.num);
+                return `
+                    <div class="glass-card episode-card">
+                        <div>
+                            <div class="ep-header">
+                                <span class="ep-number">LOG ENTRY #${ep.num}</span>
+                                <button class="tracker-btn ${isWatched ? 'watched' : ''}" onclick="toggleTrackEpisode(${ep.num})">
+                                    <i class="fa-${isWatched ? 'solid' : 'regular'} fa-circle-check"></i>
+                                </button>
+                            </div>
+                            <h4 style="margin-bottom:8px;">${ep.title}</h4>
+                            <p style="font-size:0.85rem; color:var(--text-muted);">${ep.summary}</p>
+                        </div>
+                        <span style="font-size:0.75rem; color:var(--gold); margin-top:15px; display:block; text-transform:uppercase; letter-spacing:1px;"><i class="fa-solid fa-anchor"></i> ${ep.saga}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleTrackEpisode(num) {
+            if (watchedEpisodes.includes(num)) {
+                watchedEpisodes = watchedEpisodes.filter(n => n !== num);
+            } else {
+                watchedEpisodes.push(num);
+            }
+            localStorage.setItem('watchedEpisodesIndex', JSON.stringify(watchedEpisodes));
+            renderEpisodes();
+        }
+
+        document.getElementById('episode-search').addEventListener('input', renderEpisodes);
+        document.getElementById('saga-filter').addEventListener('change', renderEpisodes);
+
+        // Cinema Vault Render Engine & Interactive Rating Engine
+        let userRatings = JSON.parse(localStorage.getItem('movieVaultRatings')) || {};
+
+        function renderMovies() {
+            const container = document.getElementById('movie-display-grid');
+            container.innerHTML = moviesData.map((movie, mIdx) => {
+                const globalRating = userRatings[mIdx] || Math.round(movie.rating);
+                return `
+                    <div class="glass-card movie-card">
+                        <div class="movie-header">
+                            <h3>${movie.title}</h3>
+                            <div class="movie-meta">
+                                <span><i class="fa-regular fa-calendar"></i> ${movie.year}</span>
+                                <span><i class="fa-regular fa-clock"></i> ${movie.duration}</span>
+                            </div>
+                            <p style="font-size:0.9rem; color:var(--text-muted); min-height: 70px;">${movie.sync}</p>
+                        </div>
+                        <div class="rating-box">
+                            <span style="font-size:0.85rem; color:var(--gold); font-weight:600;">Log Rating:</span>
+                            <div class="star-rating">
+                                ${[1, 2, 3, 4, 5].map(star => `
+                                    <i class="fa-solid fa-star ${star <= globalRating ? 'active' : ''}" onclick="rateMovie(${mIdx}, ${star})"></i>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function rateMovie(movieIndex, rating) {
+            userRatings[movieIndex] = rating;
+            localStorage.setItem('movieVaultRatings', JSON.stringify(userRatings));
+            renderMovies();
+        }
+
+        // Factions & Character Database Filter Render Engine
+        function filterCharacters(faction) {
+            const container = document.getElementById('character-display-grid');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            buttons.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(`'${faction}'`)) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            const filtered = faction === 'all' ? charactersData : charactersData.filter(c => c.faction === faction);
+
+            container.innerHTML = filtered.map(c => `
+                <div class="glass-card char-card">
+                    <div class="char-name">${c.name}</div>
+                    <div class="char-info">
+                        <div><span class="char-label">Affiliation:</span> ${c.crew}</div>
+                        <div><span class="char-label">Ship Role:</span> ${c.role}</div>
+                        <div><span class="char-label">Active Bounty:</span> <span style="color:#4ade80;">฿ ${c.bounty}</span></div>
+                        <div><span class="char-label">Devil Fruit:</span> ${c.fruit}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Vertical Log Pose Timeline Assembly Engine
+        function renderTimeline() {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = timelineData.map(item => `
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card" style="padding: 20px;">
+                        <div class="timeline-title">${item.title}</div>
+                        <p style="font-size:0.9rem; color:var(--text-muted); margin:0;">${item.desk}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Global Application Entry Orchestrator
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSagas();
+            renderEpisodes();
+            renderMovies();
+            filterCharacters('all');
+            renderTimeline();
+        });
+    </script>
+</body>
+</html>
